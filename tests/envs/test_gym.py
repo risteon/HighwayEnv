@@ -100,6 +100,7 @@ def test_env_reset_options(env_spec: str = "highway-v0"):
         "intersection-v1",
         "parking-v0",
         "two-way-v0",
+        "lane-keeping-v0",
         "racetrack-v0",
     ],
 )

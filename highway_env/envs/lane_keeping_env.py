@@ -63,13 +63,13 @@ class LaneKeepingEnv(AbstractEnv):
         obs = self.observation_type.observe()
         self._simulate()
 
-        info = {}
-        reward = self._reward(action)
+        info = self._info(obs, action=action)
+        reward = info["rewards"]
         terminated = self._is_terminated()
         truncated = self._is_truncated()
         return obs, reward, terminated, truncated, info
 
-    def _reward(self, action: np.ndarray) -> float:
+    def _rewards(self, action: np.ndarray) -> float:
         _, lat = self.lane.local_coordinates(self.vehicle.position)
         return 1 - (lat / self.lane.width) ** 2
 
